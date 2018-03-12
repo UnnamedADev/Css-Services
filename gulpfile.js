@@ -1,27 +1,32 @@
 'use strict'
+
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
-
 const gulp = require('gulp');
 const babel = require('gulp-babel');
-
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const minifyCSS = require('gulp-minify-css');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
-
 const uglify = require('gulp-uglify');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
 
 gulp.task('scripts', () => {
-	return gulp.src('./src/scripts/**/*.js')
-		.pipe(babel({
-			presets: ['env']
-        }))
-        .pipe(concat('main.js'))
+	browserify('src/scripts/app.js')
+        .transform('babelify', {
+            presets: ['env']
+        })
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(buffer())
+        //.pipe(concat('main.js'))
         .pipe(uglify())
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename({basename: 'main', suffix: '.min'}))
         .pipe(gulp.dest('./dist/scripts'))
         .pipe(reload({stream:true}));
 });

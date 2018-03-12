@@ -1,1 +1,98 @@
-@import 'variables.scss';
+@import 'variables';
+@import 'mixins';
+@import 'templates';
+
+@font-face {
+    font-family: oswald;
+    src: url(../fonts/Oswald-Regular.ttf);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @extend %title;
+}
+
+html, body, ul, ol {
+    margin: 0;
+    padding: 0;
+    font-family: oswald;
+    text-align: center;
+    background: $dark;
+}
+
+body {
+    > * {
+        @extend %page-section;
+    }
+    > header {
+        background: $fair;
+        position: relative;
+        padding: 40px 0;
+        > h1 {
+            font-size: 5em;
+            color: $special;
+            > span:nth-last-of-type(1){
+                border-top: 10px solid $special;
+            }
+            > span:nth-last-of-type(2){
+                border-bottom: 10px solid $special;
+            }
+            > span:nth-last-of-type(3){
+                border-top: 10px solid $special;
+            }
+        }
+    }
+    > nav {
+        border-top: 10px solid $dark;
+        background: $dark;
+        > #stMenu {
+            list-style-type: none;
+            background: $dark;
+            width: 100%;
+            > li {
+                position: relative;
+                background: $dark;
+                float: left;
+                width: 150px;
+                height: 150px;
+                transition: 0.25s ease;
+                &:hover{
+                    background: $special;
+                }
+                > a {
+                    @extend %vertical-center;
+                    @extend %title;
+                    color: $fair;
+                    font-size: 1.5em;
+                }
+            }
+            .stMenu_active {
+                background: $fair;
+                > a {
+                    color: $dark;
+                    font-weight: bold;
+                }
+            }
+        }
+        .wrappedMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    }
+    > section {
+        background: $fair;
+        > .stSection {
+            background: $special;
+            width: 90%;
+        }
+    }
+    > footer {
+        background: $dark;
+        color: $fair;
+    }
+}
+
+//BOX SHADOW
+#stBox-Shadow{
+
+}

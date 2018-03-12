@@ -1,0 +1,14 @@
+%page-section {
+    float: left;
+    width: 100%;
+}
+%vertical-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+%title {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
