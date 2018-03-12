@@ -46,6 +46,8 @@ body {
         background: $dark;
         > #stMenu {
             list-style-type: none;
+            background: $dark;
+            width: 100%;
             > li {
                 position: relative;
                 background: $dark;
@@ -63,13 +65,18 @@ body {
                     font-size: 1.5em;
                 }
             }
-            #stMenu_active {
+            .stMenu_active {
                 background: $fair;
                 > a {
                     color: $dark;
                     font-weight: bold;
                 }
             }
+        }
+        .wrappedMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
         }
     }
     > section {

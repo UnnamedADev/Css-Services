@@ -1,3 +1,5 @@
+//IMPORT
+
 //MODULE
 export const loadData = (object, path) => {
 
