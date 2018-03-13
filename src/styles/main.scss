@@ -17,6 +17,7 @@ html, body, ul, ol {
     font-family: oswald;
     text-align: center;
     background: $dark;
+    color: $dark;
 }
 
 body {
@@ -43,6 +44,7 @@ body {
     }
     > nav {
         border-top: 10px solid $dark;
+        border-bottom: 5px solid $shadow;
         background: $dark;
         > #stMenu {
             list-style-type: none;
@@ -52,8 +54,8 @@ body {
                 position: relative;
                 background: $dark;
                 float: left;
-                width: 150px;
-                height: 150px;
+                width: 15vh;
+                height: 15vh;;
                 transition: 0.25s ease;
                 &:hover{
                     background: $special;
@@ -83,15 +85,61 @@ body {
         background: $fair;
         > .stSection {
             background: $special;
-            width: 90%;
+            margin: auto;
+            width: 100%;
+            > div {
+                float: left;
+                width: 50%;
+                background: $fair;
+                box-sizing: border-box;
+                padding: 40px 0px;
+            }
+            > div:nth-of-type(1){
+                > h1 {
+                    font-size: 2em;
+                }
+                > h2 {
+                    font-size: 1.5em;
+                }
+            }
+            > div:nth-of-type(2){
+                border-left: 1px solid $shadow;
+            }
         }
     }
     > footer {
+        border-top: 5px solid $shadow;
         background: $dark;
         color: $fair;
     }
 }
 
+.stConf {
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    border: 2px dashed $special;
+    transition: 0.25s ease;
+    > h2 {
+        display: inline-block;
+        font-size: 1em;
+        width: 100%;
+        margin: 0;
+    }
+    > input[type=number]{
+        display: inline-block;
+        margin: 5px;
+    }
+    > input[type=range]{
+        margin: auto;
+        width: 80%;
+        display: block;
+    }
+    &:hover{
+        transform: scale(1.05,1.05);
+    }
+}
 //BOX SHADOW
 #stBox-Shadow{
 

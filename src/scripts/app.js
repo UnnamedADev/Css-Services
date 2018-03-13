@@ -4,5 +4,6 @@ import {menuEvents, menuWrapper} from './modules/menu.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     menuEvents();
-    menuWrapper();
+    //menuWrapper();
+    loadData('stDataContainer','./dist/partials/box-shadow.html');
 });

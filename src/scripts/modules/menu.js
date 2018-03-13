@@ -28,7 +28,7 @@ export const menuWrapper = () => {
     let state = false;
 
     window.addEventListener("scroll", function(){
-        if(this.scrollY >= my && state == false){
+        if(this.scrollY >= menu.offsetTop && state == false){
             menu.classList.add("wrappedMenu");
             state = true;
         }
