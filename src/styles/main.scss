@@ -79,6 +79,7 @@ body {
             position: fixed;
             top: 0;
             left: 0;
+            z-index: 999999;
         }
     }
     > section {
@@ -113,34 +114,88 @@ body {
         color: $fair;
     }
 }
-
 .stConf {
     width: 50%;
-    margin: 20px auto;
+    margin: 20px 25%;
     padding: 10px;
     text-align: center;
-    border: 2px dashed $special;
+    border: 2px solid $shadow;
     transition: 0.25s ease;
+    float: left;
+    > * {
+        float: left;
+        margin: 5px 0px;
+    }
     > h2 {
         display: inline-block;
         font-size: 1em;
         width: 100%;
-        margin: 0;
     }
     > input[type=number]{
-        display: inline-block;
-        margin: 5px;
+        outline: none;
+        border: none;
+        width: 100%;
+        font-family: oswald;
+        border: 1px solid $special;
+        background: $fair;
+        padding: 10px 0xp;
+        text-align: center;
+        font-size: 1.1em;
     }
-    > input[type=range]{
-        margin: auto;
-        width: 80%;
-        display: block;
+    >button {
+        @extend %button;
+        @extend %title;
+        background: $special;
+        color: $fair;
+        font-size: 1.1em;
+        padding: 5px 0px;
+        &:hover {
+            background: $dark;
+        }
+    }
+    > button, progress {
+        width: 50%;
+        box-sizing: border-box;
+    }
+    > progress[value]:nth-of-type(1)::-webkit-progress-bar {
+        background: $special;
+        border-top-left-radius: 100%;
+    }
+    > progress[value]:nth-of-type(1)::-moz-progress-bar {
+        background: $special;
+        border-top-left-radius: 100%;
+    }
+    > progress[value]:nth-of-type(2)::-webkit-progress-bar {
+        background: $dark;
+        border-top-right-radius: 100%;
+    }
+    > progress[value]:nth-of-type(2)::-moz-progress-bar {
+        background: $dark;
+        border-top-right-radius: 100%;
     }
     &:hover{
-        transform: scale(1.05,1.05);
+        background: $shadow;
     }
 }
 //BOX SHADOW
 #stBox-Shadow{
+    background: none;
+}
 
+//PROGRESS
+progress[value] {
+    border: none;
+    appearance: none;
+    background: none;
+    border-bottom: 2px solid $special;
+    height: 15px;
+}
+//INPUT NUMBER
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
 }
