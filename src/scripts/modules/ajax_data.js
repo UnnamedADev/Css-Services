@@ -1,5 +1,5 @@
 //IMPORT
-
+import {inputHandle} from './css_handle.js';
 //MODULE
 export const loadData = (object, path) => {
 
@@ -17,7 +17,8 @@ export const loadData = (object, path) => {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        object.innerHTML = this.responseText;
+        object.insertAdjacentHTML('afterbegin',this.responseText);
+        inputHandle();
         }
     };
     xhttp.open('GET', path, true);
