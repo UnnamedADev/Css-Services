@@ -70,24 +70,35 @@ export const generateCode = () => {
     let allInputs = document.getElementsByTagName('input');
     let ourTarget = document.getElementById('stTarget');
     let codeTarget = document.getElementById('codeTarget');
+    let finalColor, finalCode, textCode;
     switch(pid){
         case "stBox-Shadow":
             //shadow box
-            let finalColor = 'rgba('+allInputs[4].value+', '+allInputs[5].value/100+')';
-            let finalCode = allInputs[0].value+'px '+allInputs[1].value+'px '+allInputs[2].value+'px '+allInputs[3].value+'px '+finalColor;
-            console.log(finalCode);
+            finalColor = 'rgba('+allInputs[4].value+', '+allInputs[5].value/100+')';
+            finalCode = allInputs[0].value+'px '+allInputs[1].value+'px '+allInputs[2].value+'px '+allInputs[3].value+'px '+finalColor;
             ourTarget.style.boxShadow = finalCode;
-            console.log(ourTarget);
 
-            let textCode = 'box-shadow: '+finalCode+'\n';
-            textCode += '-moz-box-shadow: '+finalCode+'\n';
-            textCode += '-webkit-box-shadow: '+finalCode+'\n';
-            textCode += '-o-box-shadow: '+finalCode+'\n';
-            textCode += '-ms-box-shadow: '+finalCode+'\n';
+            textCode = 'box-shadow: '+finalCode+';\n';
+            textCode += '-moz-box-shadow: '+finalCode+';\n';
+            textCode += '-webkit-box-shadow: '+finalCode+';\n';
+            textCode += '-o-box-shadow: '+finalCode+';\n';
+            textCode += '-ms-box-shadow: '+finalCode+';\n';
 
             codeTarget.textContent = textCode;
         break;
         case "stText-Shadow":
+            //text shadow
+            finalColor = 'rgba('+allInputs[3].value+', '+allInputs[4].value/100+')';
+            finalCode = allInputs[0].value+'px '+allInputs[1].value+'px '+allInputs[2].value+'px '+finalColor;
+            ourTarget.style.textShadow = finalCode;
+
+            textCode = 'text-shadow: '+finalCode+';\n';
+            textCode += '-moz-text-shadow: '+finalCode+';\n';
+            textCode += '-webkit-text-shadow: '+finalCode+';\n';
+            textCode += '-o-text-shadow: '+finalCode+';\n';
+            textCode += '-ms-text-shadow: '+finalCode+';\n';
+
+            codeTarget.textContent = textCode;
         break;
         default:
         console.log("Invalid partial ID");
@@ -106,4 +117,15 @@ export const codeHandle = () => {
         });
         generateCode();
     }
+
+    let textCode = document.getElementById('codeTarget');
+    let copyBttn = document.getElementsByClassName('stCode')[0].getElementsByTagName('button')[0];
+    copyBttn.addEventListener('click',() => {
+        textCode.select();
+        document.execCommand('copy');
+        copyBttn.classList.add('bttnCopyInfo');
+        setTimeout(() => {
+            copyBttn.classList.remove('bttnCopyInfo');
+        },2000);
+    });
 }

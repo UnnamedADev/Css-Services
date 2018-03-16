@@ -25,7 +25,7 @@ gulp.task('scripts', () => {
         .pipe(source('app.js'))
         .pipe(buffer())
         //.pipe(concat('main.js'))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(rename({basename: 'main', suffix: '.min'}))
         .pipe(gulp.dest('./dist/scripts'))
         .pipe(reload({stream:true}));
