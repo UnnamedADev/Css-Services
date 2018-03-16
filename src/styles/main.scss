@@ -55,7 +55,7 @@ body {
                 background: $dark;
                 float: left;
                 width: 15vh;
-                height: 15vh;;
+                height: 15vh;
                 transition: 0.25s ease;
                 &:hover{
                     background: $special;
@@ -79,6 +79,11 @@ body {
             position: fixed;
             top: 0;
             left: 0;
+            z-index: 999999;
+            > li {
+                width: 30vh !important;
+                height: 5vh !important;
+            }
         }
     }
     > section {
@@ -95,6 +100,7 @@ body {
                 padding: 40px 0px;
             }
             > div:nth-of-type(1){
+                border-right: 1px solid $shadow;
                 > h1 {
                     font-size: 2em;
                 }
@@ -103,7 +109,12 @@ body {
                 }
             }
             > div:nth-of-type(2){
-                border-left: 1px solid $shadow;
+                > h1 {
+                    font-size: 2em;
+                }
+                > h2 {
+                    font-size: 1.5em;
+                }
             }
         }
     }
@@ -113,34 +124,146 @@ body {
         color: $fair;
     }
 }
-
+.stPreview {
+    width: 80%;
+    height: 700px;
+    margin: 20px 10%;
+    border: 2px solid $shadow;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    > div {
+        width: 250px;
+        height: 250px;
+        background: $special;
+        @extend %vertical-center;
+    }
+    > p {
+        @extend %vertical-center;
+        font-size: 2em;
+        color: $special;
+    }
+}
+.stCode {
+    width: 80%;
+    margin: 0px 10%;
+    border: 2px solid $shadow;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    padding: 20px 0px;
+    > textarea {
+        width: 90%;
+        height: 300px;
+        resize: none;
+        font-family: oswald;
+        font-size: 1.4em;
+        border: 1px solid $special;
+        padding: 10px;
+    }
+    > button {
+        @extend %button;
+        @extend %title;
+        background: $special;
+        color: $fair;
+        font-size: 1.1em;
+        padding: 5px 50px;
+        margin-top: 20px;
+    }
+}
 .stConf {
     width: 50%;
-    margin: 20px auto;
+    margin: 20px 25%;
     padding: 10px;
     text-align: center;
-    border: 2px dashed $special;
+    border: 2px solid $shadow;
     transition: 0.25s ease;
+    float: left;
+    > * {
+        float: left;
+        margin: 5px 0px;
+    }
     > h2 {
         display: inline-block;
         font-size: 1em;
         width: 100%;
-        margin: 0;
     }
-    > input[type=number]{
-        display: inline-block;
-        margin: 5px;
+    > p {
+        width: 100%;
+        @extend %title;
+        font-size: 0.8em;
     }
-    > input[type=range]{
-        margin: auto;
-        width: 80%;
-        display: block;
+    > input[type=number], input[type=text]{
+        outline: none;
+        border: none;
+        width: 100%;
+        font-family: oswald;
+        border: 1px solid $special;
+        background: $fair;
+        padding: 10px 0xp;
+        text-align: center;
+        font-size: 1.1em;
+    }
+    >button {
+        @extend %button;
+        @extend %title;
+        background: $special;
+        color: $fair;
+        font-size: 1.1em;
+        padding: 5px 0px;
+        &:hover {
+            background: $dark;
+        }
+    }
+    > button, progress {
+        width: 50%;
+        box-sizing: border-box;
+    }
+    > progress[value]:nth-of-type(1)::-webkit-progress-bar {
+        background: $special;
+        border-top-left-radius: 100%;
+    }
+    > progress[value]:nth-of-type(1)::-moz-progress-bar {
+        background: $special;
+        border-top-left-radius: 100%;
+    }
+    > progress[value]:nth-of-type(2)::-webkit-progress-bar {
+        background: $dark;
+        border-top-right-radius: 100%;
+    }
+    > progress[value]:nth-of-type(2)::-moz-progress-bar {
+        background: $dark;
+        border-top-right-radius: 100%;
     }
     &:hover{
-        transform: scale(1.05,1.05);
+        background: $shadow;
     }
 }
 //BOX SHADOW
 #stBox-Shadow{
+    background: none;
+    >div:nth-last-of-type(2){
+        position: relative;
+        > div{
+            
+        }
+    }
+}
 
+//PROGRESS
+progress[value] {
+    border: none;
+    appearance: none;
+    background: none;
+    border-bottom: 2px solid $special;
+    height: 15px;
+}
+//INPUT NUMBER
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
 }

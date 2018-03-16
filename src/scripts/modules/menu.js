@@ -8,14 +8,14 @@ export const menuEvents = () => {
     for(let i = 0; i<menuBttns.length;i++){
         
         let destination = menuBttns[i].getElementsByTagName('a')[0].textContent;
-        destination = 'dist/partials/'+destination.replace(" ", "-")+'.html';
+        destination = 'dist/partials/'+destination.replace(' ', '-')+'.html';
 
-        menuBttns[i].addEventListener("click", function(){
+        menuBttns[i].addEventListener('click', function(){
             let allBttns = document.getElementById('stMenu').getElementsByTagName('li');
             for(let k = 0;k<allBttns.length;k++){
-                allBttns[k].classList.remove("stMenu_active");
+                allBttns[k].classList.remove('stMenu_active');
             }
-            this.classList.add("stMenu_active");
+            this.classList.add('stMenu_active');
             loadData(loadCnt, destination);
         });
     }
@@ -23,17 +23,19 @@ export const menuEvents = () => {
 
 export const menuWrapper = () => {
 
-    let menu = document.getElementById("stMenu");
+    let menu = document.getElementById('stMenu');
     let my = menu.offsetTop;
     let state = false;
-
-    window.addEventListener("scroll", function(){
+    let cont = document.getElementById('stDataContainer');
+    window.addEventListener('scroll', function(){
         if(this.scrollY >= menu.offsetTop && state == false){
-            menu.classList.add("wrappedMenu");
+            cont.style.paddingTop = menu.scrollHeight+'px';
+            menu.classList.add('wrappedMenu');
             state = true;
         }
-        if(this.scrollY <= my && state == true){
-            menu.classList.remove("wrappedMenu");
+        if(this.scrollY < my && state == true){
+            cont.style.paddingTop = "";
+            menu.classList.remove('wrappedMenu');
             state = false;
         }
     });

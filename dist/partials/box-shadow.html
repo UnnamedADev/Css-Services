@@ -5,38 +5,62 @@
         <h2>Geometry</h2>
             <div class="stConf">
                 <h2>Move in X axis</h2>
-                <input type="number">
-                <input type="range">
+                <progress max="100" value="0" dir="rtl"></progress>
+                <progress max="100" value="5" dir="ltr"></progress>
+                <input type="number" value="5">
+                <button>Less</button>
+                <button>More</button>
             </div>
             <div class="stConf">
                 <h2>Move in Y axis</h2>
-                <input type="number">
-                <input type="range">
+                <progress max="100" value="0" dir="rtl"></progress>
+                <progress max="100" value="5" dir="ltr"></progress>
+                <input type="number" value="5">
+                <button>Less</button>
+                <button>More</button>
             </div>
             <div class="stConf">
                 <h2>Blur radius</h2>
-                <input type="number">
-                <input type="range">
+                <progress max="0" value="0" dir="rtl"></progress>
+                <progress max="100" value="15" dir="ltr"></progress>
+                <input type="number" value="15">
+                <button>Less</button>
+                <button>More</button>
             </div>
             <div class="stConf">
-                <h2>Size</h2>
-                <input type="number">
-                <input type="range">
+                <h2>Shadow size</h2>
+                <progress max="0" value="0" dir="rtl"></progress>
+                <progress max="100" value="2" dir="ltr"></progress>
+                <input type="number" value="2">
+                <button>Less</button>
+                <button>More</button>
             </div>
         <h2>Colors properties</h2>
-            <div class="stConf">
+            <div class="stConf colorConf">
                 <h2>Shadow color</h2>
-                <input type="number">
-                <input type="range">
+                <input type="text" value="100,100,100">
+                <p>Type color here</p>
             </div>
             <div class="stConf">
-                <h2>opacity</h2>
-                <input type="number">
-                <input type="range">
+                <h2>Color opacity</h2>
+                <progress max="0" value="0" dir="rtl"></progress>
+                <progress max="100" value="100" dir="ltr"></progress>
+                <input type="number" value="100">
+                <button>Less</button>
+                <button>More</button>
             </div>
     </div>
     <div>
         <!-- preview -->
-
+        <h1>Preview</h1>
+        <h2>Check your setup</h2>
+        <div class="stPreview">
+            <div id="stTarget"></div>
+        </div>
+        <h2>copy code</h2>
+        <div class="stCode">
+            <textarea id="codeTarget"a></textarea>
+            <button>Copy</button>
+        </div>
     </div>
 </div>

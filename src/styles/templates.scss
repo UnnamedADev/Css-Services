@@ -1,3 +1,5 @@
+@import 'variables';
+
 %page-section {
     float: left;
     width: 100%;
@@ -11,4 +13,12 @@
 %title {
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+%button {
+    outline: none;
+    border: none;
+    font-family: oswald;
+    &:focus {
+        outline: none;
+    }
 }
