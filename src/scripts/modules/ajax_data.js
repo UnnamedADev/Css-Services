@@ -1,5 +1,5 @@
 //IMPORT
-import {inputHandle, codeHandle} from './css_handle.js';
+import {inputHandle, codeHandle} from './generator.js';
 //MODULE
 export const loadData = (object, path) => {
 

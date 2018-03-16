@@ -169,6 +169,15 @@ body {
         font-size: 1.1em;
         padding: 5px 50px;
         margin-top: 20px;
+        position: relative;
+    }
+    .bttnCopyInfo {
+        &::after {
+            content: "Text has been copied";
+            position: absolute;
+            color: $dark;
+            right: -200px;
+        }
     }
 }
 .stConf {

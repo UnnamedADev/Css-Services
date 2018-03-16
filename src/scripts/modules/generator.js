@@ -75,19 +75,18 @@ export const generateCode = () => {
             //shadow box
             let finalColor = 'rgba('+allInputs[4].value+', '+allInputs[5].value/100+')';
             let finalCode = allInputs[0].value+'px '+allInputs[1].value+'px '+allInputs[2].value+'px '+allInputs[3].value+'px '+finalColor;
-            console.log(finalCode);
             ourTarget.style.boxShadow = finalCode;
-            console.log(ourTarget);
 
-            let textCode = 'box-shadow: '+finalCode+'\n';
-            textCode += '-moz-box-shadow: '+finalCode+'\n';
-            textCode += '-webkit-box-shadow: '+finalCode+'\n';
-            textCode += '-o-box-shadow: '+finalCode+'\n';
-            textCode += '-ms-box-shadow: '+finalCode+'\n';
+            let textCode = 'box-shadow: '+finalCode+';\n';
+            textCode += '-moz-box-shadow: '+finalCode+';\n';
+            textCode += '-webkit-box-shadow: '+finalCode+';\n';
+            textCode += '-o-box-shadow: '+finalCode+';\n';
+            textCode += '-ms-box-shadow: '+finalCode+';\n';
 
             codeTarget.textContent = textCode;
         break;
         case "stText-Shadow":
+            //text shadow
         break;
         default:
         console.log("Invalid partial ID");
@@ -106,4 +105,15 @@ export const codeHandle = () => {
         });
         generateCode();
     }
+
+    let textCode = document.getElementById('codeTarget');
+    let copyBttn = document.getElementsByClassName('stCode')[0].getElementsByTagName('button')[0];
+    copyBttn.addEventListener('click',() => {
+        textCode.select();
+        document.execCommand('copy');
+        copyBttn.classList.add('bttnCopyInfo');
+        setTimeout(() => {
+            copyBttn.classList.remove('bttnCopyInfo');
+        },2000);
+    });
 }
