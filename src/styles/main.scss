@@ -132,16 +132,9 @@ body {
     position: relative;
     float: left;
     box-sizing: border-box;
-    > div {
-        width: 250px;
-        height: 250px;
-        background: $special;
-        @extend %vertical-center;
-    }
-    > p {
-        @extend %vertical-center;
-        font-size: 2em;
-        color: $special;
+    transition: 0.25s ease;
+    &:hover{
+        background: $shadow;
     }
 }
 .stCode {
@@ -152,14 +145,16 @@ body {
     float: left;
     box-sizing: border-box;
     padding: 20px 0px;
+    transition: 0.25s ease;
     > textarea {
         width: 90%;
         height: 300px;
         resize: none;
         font-family: oswald;
-        font-size: 1.4em;
+        font-size: 1em;
         border: 1px solid $special;
         padding: 10px;
+        font-family: Arial, Helvetica, sans-serif;
     }
     > button {
         @extend %button;
@@ -178,6 +173,9 @@ body {
             color: $dark;
             right: -200px;
         }
+    }
+    &:hover{
+        background: $shadow;
     }
 }
 .stConf {
@@ -248,6 +246,27 @@ body {
         background: $shadow;
     }
 }
+.selectConf {
+    > div {
+        border: 1px solid $special;
+        background: $fair url('../assets/images/select-icon.png') no-repeat scroll 97% center;
+        width: 100%;
+        overflow: hidden;
+        
+        > select {
+            font-size: 1em;
+            font-family: oswald;
+            padding: 5px 8px;
+            width: 100%;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            background-image: none;
+            appearance: none;
+            @extend %title;
+        }
+    }
+}
 //BOX SHADOW
 #stBox-Shadow{
     background: none;
@@ -257,8 +276,33 @@ body {
             
         }
     }
+    .stPreview {
+        > div {
+            width: 250px;
+            height: 250px;
+            background: $special;
+            @extend %vertical-center;
+        }
+    }
 }
-
+#stText-Shadow {
+    .stPreview {
+        > p {
+            @extend %vertical-center;
+            font-size: 2em;
+            color: $special;
+        }
+    }
+}
+#stBorders {
+    .stPreview {
+        > div {
+            @extend %vertical-center;
+            width: 250px;
+            height: 250px;
+        }
+    }
+}
 //PROGRESS
 progress[value] {
     border: none;
