@@ -40,3 +40,26 @@ export const menuWrapper = () => {
         }
     });
 }
+
+export const serviceMap = () => {
+    let menu = document.getElementById('stMenu');
+    let menuPoints = menu.getElementsByTagName('a');
+    let map = document.getElementById('stServiceMap');
+    for(let i = 0;i<menuPoints.length;i++){
+        map.innerHTML += '<li>'+menuPoints[i].textContent+'</li>';
+        map.getElementsByTagName('li')[i].style.width = 100/menuPoints.length+'%';
+    }
+    let newPoints = map.getElementsByTagName('li');
+
+    for(let k = 0;k<newPoints.length;k++){
+        newPoints[k].addEventListener('click', () => {
+            let findLi = document.getElementById('stMenu').getElementsByTagName('li');
+            for(let j = 0;j<findLi.length;j++){
+                if(findLi[j].getElementsByTagName('a')[0].textContent == newPoints[k].textContent){
+                    findLi[j].click();
+                };
+            }
+        });
+    }
+
+}
