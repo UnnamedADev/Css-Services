@@ -122,6 +122,20 @@ export const generateCode = () => {
 
             codeTarget.textContent = textCode;
         break;
+        case 'stFilter':
+            //filter
+            finalCode = 'blur('+allInputs[0].value+'px) brightness('+allInputs[1].value+'%) contrast('+allInputs[2].value+'%) grayscale('+allInputs[3].value+'%) hue-rotate('+allInputs[4].value+'deg) invert('+allInputs[5].value+'%) opacity('+allInputs[6].value+'%) saturate('+allInputs[7].value+'%) sepia('+allInputs[8].value+'%)';
+
+            ourTarget.style.filter = finalCode;
+
+            textCode = 'filter: '+finalCode+';\n';
+            textCode += '-moz-filter: '+finalCode+';\n';
+            textCode += '-webkit-filter: '+finalCode+';\n';
+            textCode += '-o-filter: '+finalCode+';\n';
+            textCode += '-ms-filter: '+finalCode+';\n';
+
+            codeTarget.textContent = textCode;
+        break;
         default:
         console.log("Invalid partial ID");
         break;

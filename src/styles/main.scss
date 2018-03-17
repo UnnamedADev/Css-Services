@@ -303,6 +303,15 @@ body {
         }
     }
 }
+#stFilter {
+    .stPreview {
+        > img {
+            @extend %vertical-center;
+            width: 250px;
+            height: 250px;
+        }
+    }
+}
 //PROGRESS
 progress[value] {
     border: none;
