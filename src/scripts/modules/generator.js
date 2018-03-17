@@ -34,7 +34,7 @@ export const inputHandle = () => {
     let conf = document.getElementsByClassName('stConf');
     for(let i = 0; i<conf.length; i++){
         //non color
-        if(!conf[i].classList.contains('colorConf')){
+        if(!conf[i].classList.contains('colorConf') && !conf[i].classList.contains('selectConf')){
             let cont = conf[i];
             let input = cont.getElementsByTagName('input')[0];
             let leftProg = cont.getElementsByTagName('progress')[0];
@@ -62,19 +62,24 @@ export const inputHandle = () => {
         if(conf[i].classList.contains('colorConf')){
 
         }
+        //select
+        if(conf[i].classList.contains('selectConf')){
+
+        }
     }
 }
 
 export const generateCode = () => {
     let pid = document.getElementsByClassName('stSection')[0].id;
     let allInputs = document.getElementsByTagName('input');
+    let allSelect = document.getElementsByTagName('select');
     let ourTarget = document.getElementById('stTarget');
     let codeTarget = document.getElementById('codeTarget');
-    let finalColor, finalCode, textCode;
+    let finalColor, additionalCode, finalCode, textCode;
     switch(pid){
         case "stBox-Shadow":
             //shadow box
-            finalColor = 'rgba('+allInputs[4].value+', '+allInputs[5].value/100+')';
+            finalColor = 'rgba('+allInputs[4].value+','+allInputs[5].value/100+')';
             finalCode = allInputs[0].value+'px '+allInputs[1].value+'px '+allInputs[2].value+'px '+allInputs[3].value+'px '+finalColor;
             ourTarget.style.boxShadow = finalCode;
 
@@ -88,7 +93,7 @@ export const generateCode = () => {
         break;
         case "stText-Shadow":
             //text shadow
-            finalColor = 'rgba('+allInputs[3].value+', '+allInputs[4].value/100+')';
+            finalColor = 'rgba('+allInputs[3].value+','+allInputs[4].value/100+')';
             finalCode = allInputs[0].value+'px '+allInputs[1].value+'px '+allInputs[2].value+'px '+finalColor;
             ourTarget.style.textShadow = finalCode;
 
@@ -97,6 +102,23 @@ export const generateCode = () => {
             textCode += '-webkit-text-shadow: '+finalCode+';\n';
             textCode += '-o-text-shadow: '+finalCode+';\n';
             textCode += '-ms-text-shadow: '+finalCode+';\n';
+
+            codeTarget.textContent = textCode;
+        break;
+        case 'stBorders':
+            //borders
+            finalColor = 'rgba('+allInputs[2].value+','+allInputs[3].value/100+')';
+            finalCode = allInputs[0].value+'px '+allSelect[0].value+' '+finalColor;
+            additionalCode = allInputs[1].value+'px';
+            ourTarget.style.border = finalCode;
+            ourTarget.style.borderRadius = additionalCode;
+
+            textCode = 'border: '+finalCode+';\n';
+            textCode += 'border-radius: '+additionalCode+';\n';
+            textCode += '-moz-border-radius: '+additionalCode+';\n';
+            textCode += '-webkit-border-radius: '+additionalCode+';\n';
+            textCode += '-o-border-radius: '+additionalCode+';\n';
+            textCode += '-ms-border-radius: '+additionalCode+';\n';
 
             codeTarget.textContent = textCode;
         break;
@@ -109,10 +131,18 @@ export const generateCode = () => {
 export const codeHandle = () => {
 
     let allInputs = document.getElementsByTagName('input');
+    let allSelect = document.getElementsByTagName('select');
 
     for(let i = 0;i<allInputs.length;i++){
         let valTab = [];
         allInputs[i].addEventListener('change',() => {
+            generateCode();
+        });
+        generateCode();
+    }
+
+    for(let k = 0;k<allSelect.length;k++){
+        allSelect[k].addEventListener('change',() => {
             generateCode();
         });
         generateCode();
